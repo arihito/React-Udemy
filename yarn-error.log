@@ -1,0 +1,33 @@
+Arguments: 
+  /usr/local/var/nodebrew/node/v9.3.0/bin/node /usr/local/var/nodebrew/current/bin/yarn add axios babel-core babel-loader babel-preset-es2015 babel-preset-react css-loader extract-text-webpack-plugin geolib import-glob-loader lodash node-sass prop-types query-string react react-dom react-google-maps react-redux react-router-dom redux redux-devtools redux-devtools-extension redux-thunk sass-loader style-lodader webpack webpack-dev-server eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
+
+PATH: 
+  /usr/local/terraform/bin:/Applications/MAMP/bin/php/php7.0.0/bin:/usr/local/opt/php56/bin:/Users/arihito/.pyenv/shims:/Users/arihito/.pyenv/bin:/usr/local/git/bin:/usr/local/git-foresta:/Users/arihito/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/var/nodebrew/current/bin:/Users/arihito/.config/yarn/global/node_modules/.bin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  9.3.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Couldn't find package "style-lodader" on the "npm" registry.
+      at new MessageError (/usr/local/var/nodebrew/node/v9.3.0/lib/node_modules/yarn/lib/cli.js:186:110)
+      at NpmResolver.<anonymous> (/usr/local/var/nodebrew/node/v9.3.0/lib/node_modules/yarn/lib/cli.js:51625:15)
+      at Generator.next (<anonymous>)
+      at step (/usr/local/var/nodebrew/node/v9.3.0/lib/node_modules/yarn/lib/cli.js:98:30)
+      at /usr/local/var/nodebrew/node/v9.3.0/lib/node_modules/yarn/lib/cli.js:109:13
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:160:7)
