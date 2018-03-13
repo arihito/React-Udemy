@@ -1,7 +1,7 @@
-# Udemy_React
+# React/Redux
 
 ## 環境設定ファイル
-  `.eslintrc.js` コード補正チェックファイル
+- `.eslintrc.js` コード補正チェックファイル
 - `.gitignore git` git除外ファイル
 - `package.json` 使用モジュール一覧/実行コマンドスニペット
 - `Readme.md` GitHub使用説明ファイル
