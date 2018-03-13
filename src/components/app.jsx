@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 import SearchForm from './SearchForm';
 import GeocodeResult from './GeocodeResult';
 import Map from './Map';
+import HotelsTable from './HotelsTable';
 
 import { geocode } from '../domain/Geocoder';
+import { searchHotelByLocation } from '../domain/HotelRepository';
+
+const sortedHotels = (hotels, sortKey) => _.sortBy(hotels, h => h[sortKey]);
 
 class App extends Component {
   constructor(props) {
@@ -14,6 +19,7 @@ class App extends Component {
         lat: 35.6585805,
         lng: 139.7454329,
       },
+      sortKey: 'price',
     };
   }
 
@@ -33,7 +39,7 @@ class App extends Component {
         switch (status) {
           case 'OK': {
             this.setState({ address, location });
-            break;
+            return searchHotelByLocation(location);
           }
           case 'ZERO_RESULTS': {
             this.setErrorMesage('結果が見つかりませんでした');
@@ -43,6 +49,10 @@ class App extends Component {
             this.setErrorMesage('エラーが発生しました');
           }
         }
+        return [];
+      })
+      .then((hotels) => {
+        this.setState({ hotels: sortedHotels(hotels, this.state.sortKey) });
       })
       .catch(() => {
         this.setErrorMesage('通信に失敗しました');
@@ -51,14 +61,20 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>緯度経度検索</h1>
+      <div className="app">
+        <h1 className="app_title"><i className="fa fa-map" />　ホテル検索</h1>
         <SearchForm onSubmit={(place => this.handlePlaceSubmit(place))} />
-        <GeocodeResult
-          address={this.state.address}
-          location={this.state.location}
-        />
-        <Map location={this.state.location} />
+        <div className="app_result">
+          <div className="app_result_column">
+            <GeocodeResult
+              address={this.state.address}
+              location={this.state.location}
+            />
+            <h2 className="app_result_subtitle"><i className="fa fa-building-o" />　ホテル検索結果</h2>
+            <HotelsTable hotels={this.state.hotels} />
+          </div>
+          <Map location={this.state.location} />
+        </div>
       </div>
     );
   }
