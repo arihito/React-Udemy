@@ -19,7 +19,6 @@ export const searchHotelByLocation = (location) => {
         const basicInfo = hotel.hotel[0].hotelBasicInfo;
         const hotelName = basicInfo.hotelName.replace(/[Ａ-Ｚａ-ｚ０-９]/g, s => String.fromCharCode(s.charCodeAt(0) - 0xFEE0));
         const average = basicInfo.reviewAverage;
-        const count = basicInfo.reviewCount;
         const distance = geolib.getDistance(
           { latitude: location.lat, longitude: location.lng },
           { latitude: basicInfo.latitude, longitude: basicInfo.longitude },
@@ -34,7 +33,7 @@ export const searchHotelByLocation = (location) => {
           address2: basicInfo.address2,
           phone: basicInfo.telephoneNo,
           average: average ? `${average}` : '評価なし',
-          count: count ? `${count}件` : '0件',
+          count: basicInfo.reviewCount,
           distance,
         };
       }),

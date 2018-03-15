@@ -1,0 +1,27 @@
+@mixin title($fz:20px, $start:#333, $end:#666, $pd:15px) {
+  background: linear-gradient(-90deg, $start, $end);
+  font-size: $fz;
+  padding: $pd 0;
+}
+.app {
+  width: 1000px;
+  margin: 0 auto;
+
+  &_title {
+    @include title();
+    color: #eee;
+    margin: 0 0 30px;
+  }
+
+  &_result {
+    display: flex;
+    &_column {
+      width: 600px;
+      margin: 20px 50px 0 0;
+    }
+    &_subtitle {
+      @include title(18px, #aaa, #ccc, 10px);
+      border-left: 5px solid #999;
+    }
+  }
+}

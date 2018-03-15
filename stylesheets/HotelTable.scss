@@ -1,0 +1,101 @@
+.result {
+  width: 600px;
+  height: 280px;
+  overflow: scroll;
+  border-collapse: collapse;
+  border: 1px solid #aaa;
+  &_title {
+    text-align: center;
+    border-bottom: 1px dotted #999;
+    display: flex;
+    font-size: 0.8rem;
+    div {
+      width: 100px;
+      padding: 10px 0;
+      border-left: 1px dotted #999;
+      position: relative;
+      i.fa {
+        margin-right: 5px;
+      }
+      &:first-child {
+        border-left: none;
+      }
+      .arrow {
+        position: absolute;
+        bottom: -9px;
+        left: 0;
+        right: 0;
+        color: #888;
+        font-size: 0.6rem;
+        margin: 0 auto;
+        display: block;
+        width: 20px;
+        height: 20px;
+      }
+      @mixin sortHover {
+        cursor: pointer;
+        &:hover {
+          background-color: #eee;
+        }
+      }
+      &.resutl_title_price,
+      &.resutl_title_count {
+        @include sortHover;
+      }
+      &.resutl_title_distance,
+      &.resutl_title_average {
+        width: 60px!important;
+        @include sortHover;
+      }
+    }
+  }
+  a {
+    display: flex;
+    text-decoration: none;
+    vertical-align: middle;
+    &:hover {
+      background-color: #eee;
+    }
+    .hotels {
+      border-bottom: 1px solid #999;
+      border-top: 1px solid #eee;
+      div {
+        width: 97px;
+        height: 100px;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #aaa;
+        border-right: 1px dotted #aaa;
+        padding: 10px 10px;
+        text-align: left;
+        color: #333;
+        font-size: 0.8rem;
+        float: left;
+        &.hotels_photo {
+          padding: 0;
+          height: 140px;
+        }
+        &.hotels_name {
+          width: 500px;
+          height: 40px;
+          float: right;
+          text-align: center;
+          font-weight: bold;
+          background-color: #ccc;
+        }
+        &.hotels_price,
+        &.hotels_average,
+        &.hotels_count,
+        &.hotels_distance {
+          text-align: right;
+        }
+        &.hotels_average,
+        &.hotels_distance, {
+          width: 57px!important;
+        }
+        &.hotels_count {
+          width: 96px!important;
+        }
+      }
+    }
+  }
+}
