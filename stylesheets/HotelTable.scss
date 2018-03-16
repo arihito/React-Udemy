@@ -10,7 +10,7 @@
     display: flex;
     font-size: 0.8rem;
     div {
-      width: 100px;
+      width: 96px;
       padding: 10px 0;
       border-left: 1px dotted #999;
       position: relative;
@@ -44,7 +44,7 @@
       }
       &.resutl_title_distance,
       &.resutl_title_average {
-        width: 60px!important;
+        width: 57px!important;
         @include sortHover;
       }
     }
@@ -60,7 +60,7 @@
       border-bottom: 1px solid #999;
       border-top: 1px solid #eee;
       div {
-        width: 97px;
+        width: 92px;
         height: 100px;
         border-top: 1px solid #eee;
         border-bottom: 1px solid #aaa;
@@ -93,7 +93,7 @@
           width: 57px!important;
         }
         &.hotels_count {
-          width: 96px!important;
+          width: 92px!important;
         }
       }
     }
