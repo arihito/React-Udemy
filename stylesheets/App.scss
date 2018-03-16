@@ -7,6 +7,9 @@
   width: 1000px;
   margin: 0 auto;
 
+  @media screen and (max-width:1000px) {
+    width: 100%;
+  }
   &_title {
     @include title();
     color: #eee;
@@ -15,9 +18,16 @@
 
   &_result {
     display: flex;
+    @media screen and (max-width:1000px) {
+      display: block;
+    }
     &_column {
       width: 600px;
-      margin: 20px 50px 0 0;
+      margin: 20px 0 0 50px;
+      @media screen and (max-width:1000px) {
+        width: 90%;
+        margin: 0 auto;
+      }
     }
     &_subtitle {
       @include title(18px, #aaa, #ccc, 10px);

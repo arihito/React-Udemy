@@ -1,6 +1,9 @@
 .search-form {
-  width: 600px;
+  width: 100%;
   margin: 80px auto 20px;
+  &_title {
+    font-size: 1.2rem;
+  }
   input {
     border-radius: 5px;
     border-collapse: collapse;
@@ -8,8 +11,12 @@
     line-height: 1;
     &[type="text"] {
       padding: 10px;
-      margin: 0 20px 20px 5px;
-      width: 400px;
+      margin: 0 20px 20px 0;
+      width: 50%;
+      @media screen and (max-width:1000px) {
+        width: 90%;
+        margin-right: 0;
+      }
     }
     &[type="submit"] {
       padding: 10px 50px;

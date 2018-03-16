@@ -70,6 +70,7 @@ class App extends Component {
         <h1 className="app_title"><i className="fa fa-map" />　ホテル検索</h1>
         <SearchForm onSubmit={(place => this.handlePlaceSubmit(place))} />
         <div className="app_result">
+          <Map location={this.state.location} />
           <div className="app_result_column">
             <GeocodeResult
               address={this.state.address}
@@ -82,7 +83,6 @@ class App extends Component {
               onSort={sortKey => this.handleSortKeyChange(sortKey)}
             />
           </div>
-          <Map location={this.state.location} />
         </div>
       </div>
     );

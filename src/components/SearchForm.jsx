@@ -21,6 +21,7 @@ class SearchForm extends Component {
   render() {
     return (
       <form className="search-form" onSubmit={e => this.handleSubmit(e)}>
+        <span className="search-form_title">国内地名：</span>
         <input
           type="text"
           value={this.state.place}

@@ -1,5 +1,8 @@
+$maxW: calc(100% / 6);
+$minW: calc(100% / 12);
+
 .result {
-  width: 600px;
+  width: 100%;
   height: 280px;
   overflow: scroll;
   border-collapse: collapse;
@@ -10,15 +13,15 @@
     display: flex;
     font-size: 0.8rem;
     div {
-      width: 96px;
+      width: $maxW;
       padding: 10px 0;
       border-left: 1px dotted #999;
       position: relative;
       i.fa {
         margin-right: 5px;
       }
-      &:first-child {
-        border-left: none;
+      &:last-child {
+        border-right: none;
       }
       .arrow {
         position: absolute;
@@ -44,23 +47,21 @@
       }
       &.resutl_title_distance,
       &.resutl_title_average {
-        width: 57px!important;
+        width: $minW!important;
         @include sortHover;
       }
     }
   }
   a {
-    display: flex;
     text-decoration: none;
     vertical-align: middle;
     &:hover {
       background-color: #eee;
     }
     .hotels {
-      border-bottom: 1px solid #999;
       border-top: 1px solid #eee;
       div {
-        width: 92px;
+        width: $maxW;
         height: 100px;
         border-top: 1px solid #eee;
         border-bottom: 1px solid #aaa;
@@ -70,12 +71,16 @@
         color: #333;
         font-size: 0.8rem;
         float: left;
+        &:last-child {
+          boder-right: none;
+        }
         &.hotels_photo {
-          padding: 0;
+          width: $maxW;
           height: 140px;
+          padding: 0;
         }
         &.hotels_name {
-          width: 489px;
+          width: calc(100% - #{$maxW});
           height: 40px;
           float: right;
           text-align: center;
@@ -89,11 +94,8 @@
           text-align: right;
         }
         &.hotels_average,
-        &.hotels_distance, {
-          width: 57px!important;
-        }
-        &.hotels_count {
-          width: 92px!important;
+        &.hotels_distance {
+          width: $minW;
         }
       }
     }
