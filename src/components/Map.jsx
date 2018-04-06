@@ -14,7 +14,7 @@ const InnerMap = withGoogleMap(({ location, marker }) => (
 
 const Map = ({ location }) => (
   <InnerMap
-    containerElement={(<div />)}
+    containerElement={(<div className="mapWrapper" />)}
     mapElement={(<div className="map" />)}
     location={location}
     marker={{ position: location }}

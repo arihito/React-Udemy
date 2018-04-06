@@ -1,92 +1,33 @@
-import React, { Component } from 'react';
-import _ from 'lodash';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+} from 'react-router-dom';
 
-import SearchForm from './SearchForm';
-import GeocodeResult from './GeocodeResult';
-import Map from './Map';
-import HotelsTable from './HotelsTable';
+import SearchPage from './SearchPage';
+import About from './About';
+import Test from './Test';
 
-import { geocode } from '../domain/Geocoder';
-import { searchHotelByLocation } from '../domain/HotelRepository';
-
-const sortedHotels = (hotels, sortKey) => _.sortBy(hotels, h => h[sortKey]);
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      location: {
-        lat: 35.6585805,
-        lng: 139.7454329,
-      },
-      sortKey: 'price',
-    };
-  }
-
-  setErrorMesage(message) {
-    this.setState({
-      address: message,
-      location: {
-        lat: 0,
-        lng: 0,
-      },
-    });
-  }
-
-  handlePlaceSubmit(place) {
-    geocode(place)
-      .then(({ status, address, location }) => {
-        switch (status) {
-          case 'OK': {
-            this.setState({ address, location });
-            return searchHotelByLocation(location);
-          }
-          case 'ZERO_RESULTS': {
-            this.setErrorMesage('結果が見つかりませんでした');
-            break;
-          }
-          default: {
-            this.setErrorMesage('エラーが発生しました');
-          }
-        }
-        return [];
-      })
-      .then((hotels) => {
-        this.setState({ hotels: sortedHotels(hotels, this.state.sortKey) });
-      })
-      .catch(() => {
-        this.setErrorMesage('通信に失敗しました');
-      });
-  }
-
-  handleSortKeyChange(sortKey) {
-    this.setState({ sortKey, hotels: sortedHotels(this.state.hotels, sortKey),
-    });
-  }
-
-  render() {
-    return (
-      <div className="app">
-        <h1 className="app_title"><i className="fa fa-map" />　ホテル検索</h1>
-        <SearchForm onSubmit={(place => this.handlePlaceSubmit(place))} />
-        <div className="app_result">
-          <Map location={this.state.location} />
-          <div className="app_result_column">
-            <GeocodeResult
-              address={this.state.address}
-              location={this.state.location}
-            />
-            <h2 className="app_result_subtitle"><i className="fa fa-building-o" />　ホテル検索結果</h2>
-            <HotelsTable
-              hotels={this.state.hotels}
-              sortKey={this.state.sortKey}
-              onSort={sortKey => this.handleSortKeyChange(sortKey)}
-            />
-          </div>
-        </div>
+const App = () => (
+  <Router>
+    <div className="app">
+      <div className="gnav">
+        <h1 className="gnav_title"><a href="/"><i className="fa fa-map" />ホテル検索</a></h1>
+        <ul className="gnav_lists">
+          <li><Link to="/">Top</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/test">Test</Link></li>
+        </ul>
       </div>
-    );
-  }
-}
+      <Switch>
+        <Route exact path="/" component={SearchPage} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/test" component={Test} />
+      </Switch>
+    </div>
+  </Router>
+);
 
 export default App;

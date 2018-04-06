@@ -26,7 +26,7 @@ HotelRow.propTypes = {
     address2: PropTypes.string,
     phone: PropTypes.string,
     count: PropTypes.number,
-    average: PropTypes.number,
+    average: PropTypes.string,
     distance: PropTypes.number,
   }).isRequired,
 };

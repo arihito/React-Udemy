@@ -1,6 +1,12 @@
+.mapWrapper {
+  width: 33%;
+@media screen and (max-width: 1000px) {
+  width: 100%;
+}
+  margin-bottom: 50px;
+}
 .map {
   height: 620px;
-  width: 350px;
   margin: 20px 0;
   border: 1px solid #aaa;
   box-shadow: 0 0 15px #ccc;
